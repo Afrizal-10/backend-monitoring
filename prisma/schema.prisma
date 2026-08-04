@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  OPERATOR
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+model User {
+  id          String   @id @default(cuid())
+  employeeId  String   @unique @map("employee_id")
+  name        String
+  email       String   @unique
+  password    String
+  department  String?
+  phone       String?
+  role        Role     @default(OPERATOR)
+  status      Status   @default(ACTIVE)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  @@map("users")
+}
+
+model TemperatureCurrent {
+  rack             String   @id
+  packet           Int
+  topTemperature    Float
+  middleTemperature Float
+  bottomTemperature Float
+  topHumidity       Float
+  middleHumidity    Float
+  bottomHumidity    Float
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  @@map("temperature_current")
+}
+
+model TemperatureHistory {
+  id               String   @id @default(cuid())
+  rack             String
+  packet           Int
+  topTemperature    Float
+  middleTemperature Float
+  bottomTemperature Float
+  topHumidity       Float
+  middleHumidity    Float
+  bottomHumidity    Float
+  createdAt        DateTime @default(now()) @map("created_at")
+  @@index([rack])
+  @@index([createdAt])
+  @@map("temperature_history")
+}
