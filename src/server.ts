@@ -27,7 +27,6 @@ app.use(
     origin: [
       "http://localhost:3001",
       "http://localhost:3000",
-      "https://pc58r4w0-3001.asse.devtunnels.ms",
       process.env.FRONTEND_URL || "",
     ].filter(Boolean),
     credentials: true,
