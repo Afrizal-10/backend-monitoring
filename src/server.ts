@@ -13,19 +13,20 @@ const app = express();
 
 const PORT = Number(process.env.PORT) || 3000;
 
-console.log("========== ENV CHECK ==========");
+console.log("=");
 console.log("PORT:", process.env.PORT);
 console.log("MQTT_BROKER:", process.env.MQTT_BROKER);
 console.log("MQTT_USERNAME:", process.env.MQTT_USERNAME);
 console.log("MQTT_CLIENT_ID:", process.env.MQTT_CLIENT_ID);
 console.log("DATABASE_URL:", process.env.DATABASE_URL ? "Loaded " : "Missing ");
 console.log("JWT_SECRET:", process.env.JWT_SECRET ? "Loaded " : "Missing ");
-console.log("================================");
+console.log("=");
 
 app.use(
   cors({
     origin: [
       "http://localhost:3001",
+      "http://localhost:3000",
       "https://pc58r4w0-3001.asse.devtunnels.ms",
       process.env.FRONTEND_URL || "",
     ].filter(Boolean),
