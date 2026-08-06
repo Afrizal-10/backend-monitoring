@@ -176,6 +176,7 @@ export const getTemperatureByRack = async (
 
     const chartData = temperatures.map((item) => ({
       time: new Date(item.createdAt).toLocaleTimeString("id-ID", {
+        timeZone: "Asia/Jakarta",
         hour: "2-digit",
         minute: "2-digit",
       }),
