@@ -1,6 +1,6 @@
-import client from "../config/mqtt.js";
 import {MQTT_TOPICS} from "./topics.js";
 import {handleTemperature} from "./handlers/temperatureHandler.js";
+import client from "./client.js";
 
 client.on("connect", () => {
   console.log("MQTT Connected");

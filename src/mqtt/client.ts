@@ -14,7 +14,7 @@ client.on("connect", () => {
 });
 
 client.on("error", (err) => {
-  console.error("Publisher Error:", err);
+  console.error("MQTT Error:", err);
 });
 
 export default client;

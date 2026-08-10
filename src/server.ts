@@ -11,7 +11,7 @@ import "./mqtt/subscriber.js";
 
 const app = express();
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 5000;
 
 console.log("=");
 console.log("PORT:", process.env.PORT);
