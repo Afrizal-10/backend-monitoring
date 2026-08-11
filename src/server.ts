@@ -25,10 +25,13 @@ console.log("=");
 app.use(
   cors({
     origin: [
-      "http://localhost:3001",
       "http://localhost:3000",
+      "http://localhost:3001",
+      "https://monitoring-delta-neon.vercel.app",
       process.env.FRONTEND_URL || "",
     ].filter(Boolean),
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   }),
 );
